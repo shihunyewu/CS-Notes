@@ -420,6 +420,20 @@ Session 可以存储在服务器上的文件、数据库或者内存中。也可
 - Cookie 存储在浏览器中，容易被恶意查看。如果非要将一些隐私数据存在 Cookie 中，可以将 Cookie 值进行加密，然后在服务器进行解密；
 - 对于大型网站，如果用户所有的信息都存储在 Session 中，那么开销是非常大的，因此不建议将所有的用户信息都存储到 Session 中。
 
+### 11. SessionID 的存放方式
+
+一般来说 Session 的内容都是存放在服务器上，服务端和客户端交互 Session 都是通过 SessionID 来认证的。
+
+- 使用 Cookie 来存储，一般这个 Cookie 的名字都是类似于 SEEESIONID
+- 当客户端禁用 Cookie 的时候，重写 URL，比如 http://www.test.com/test;jsessionid=ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764
+- 当客户端禁用 Cookie 的时候，还可以将 SessionID 存放在表单的隐藏域中，如下所示
+```html
+<form name="testform" action="/xxx"> 
+    <input type="hidden" name="jsessionid" value="ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764″> 
+    <input type="text"> 
+</form>
+```
+
 ## 缓存
 
 ### 1. 优点
